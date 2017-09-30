@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Display Factorial Number</h3>
+            <input type="text" id="input1" size="3" maxlength="2" value="1" />
+            <input type="submit" id="submitButton" value="Calculate Factorial"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+          var f;
+          var x;
+          $(document).ready(function () {
+              console.log(x)
+              $('#submitButton').click(function() {
+                  f = 1;
+                  x = parseInt($('#input1').val());
+                  if (x <= 0) {
+                      alert("x must be greater than zero");
+                      f = "N/A"
+                  }
+                  while (x > 1) {
+                      f = f * x
+                      x = x -1
+                      console.log(x)
+                  }
+                  console.log(f)
+                  $('#details').html("<b>Factorial is " + f.toString() + ".</b>");
+              });
+          });
+        </script>
+
+    </body>
+</html>
