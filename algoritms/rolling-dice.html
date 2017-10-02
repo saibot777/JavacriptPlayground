@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Rolling The Dice - Probability Algorithm</h3>
+            <input type="text" id="input1" size="3" maxlength="2" value="1" />
+            <input type="submit" id="submitButton" value="Roll"/>
+            <br/><br/>
+            <img src="http://mathcode.net/images/dice6.jpg" alt="dice">
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+            var dice1 = 0;
+            var dice2 = 0;
+            var sum = 0;
+            var count = 0;
+            var begAddr = "";
+            var endAddr = "";
+            var image = ""
+          $(document).ready(function () {
+              function getRandom(maxnumber) {
+                  var x = 0;
+                  x = Math.floor((Math.random() * maxnumber) + 1);
+                  return x;
+              }
+              $('#submitButton').click(function () {
+                  count = 0;
+                  image = "";
+                  begAddr = "<img src='http://mathcode.net/images/dice";
+                  endAddr = ".jpg' alt='dice' />"
+                  do {
+                    dice1 = getRandom(6);
+                    image = image + begAddr + dice1.toString() + endAddr;
+                    dice2 = getRandom(6);
+                    image = image + begAddr + dice2.toString() + endAddr;
+                    sum = dice1 + dice2;
+                    count = count + 1;
+                    console.log(sum);
+                  } while (sum != 2)
+                  console.log("count is " + count.toString());
+                  console.log(image);
+                  image = image + "<br/>Count is " + count.toString();
+                  $('#details').html(image);
+              });
+          });
+        </script>
+
+    </body>
+</html>
