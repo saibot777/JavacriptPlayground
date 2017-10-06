@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Plot Polynomial</h3>
+            <p>Enter a,b,c,d coeffeicients: y=ax^3+bx^2+cx+d</p>
+            a <input type="text" value="0" id="a" size="1">
+            b <input type="text" value="1" id="b" size="1">
+            c <input type="text" value="0" id="c" size="1">
+            d <input type="text" value="0" id="d" size="1"><br>
+            start <input type="text" value="-5" id="start" size="1">
+            end <input type="text" value="5" id="end" size="1">
+            inc <input type="text" value="1" id="inc" size="1">
+            <input type="submit" id="submitButton" value="Build Table"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+          var x = 0;
+          var y = 0;
+          var a = 2, b = 1, c = 0, d = 0;
+          var startbound = -5;
+          var endbound = 5;
+          var increment = 1;
+          var htmlout = "";
+          $(document).ready(function () {
+            function getY(x) {
+                return a*x*x*x + b*x*x + c*x + d;
+            }
+            $('#submitButton').click(function() {
+                a = parseFloat($('#a').val());
+                b = parseFloat($('#b').val());
+                c = parseFloat($('#c').val());
+                d = parseFloat($('#d').val());
+                startbound = parseFloat($('#start').val());
+                endbound = parseFloat($('#end').val());
+                increment = parseFloat($('#inc').val());
+                x = startbound;
+                htmlout = "<table class='table'>";
+                htmlout = htmlout + "<tr><th>X</th><th>Y</th></tr>"
+                do {
+                    htmlout = htmlout + "<tr>";
+                    y = getY(x);
+                    console.log(x,y);
+                    htmlout = htmlout + "<td>" + x.toFixed(2) + "</td>";
+                    htmlout = htmlout + "<td>" + y.toFixed(2) + "</td>";
+                    x += increment;
+                    htmlout = htmlout + "</tr>";
+                } while (x <= endbound)
+                htmlout = htmlout + "</table>";
+                $('#details').html(htmlout);
+            });
+          });
+        </script>
+
+    </body>
+</html>
