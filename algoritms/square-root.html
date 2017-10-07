@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Estimate Square Root</h3>
+            Enter Number:
+            <input type="text" id="num" value="700" size="2"><br>
+            <input type="submit" id="submitButton" value="Calculate"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+          var x = 25;
+          var guess = 9;
+          var marginOfError = 0.1;
+          var error = 0;
+          var counter = 0;
+          var htmlout = "";
+          $(document).ready(function () {
+              function getGuess(g) {
+                  return (g + x/g) / 2;
+              }
+              $('#submitButton').click(function() {
+                  x = parseFloat($('#num').val());
+                  counter = 0;
+                  error = Math.abs(guess * guess - x);
+                  while (error >= marginOfError) {
+                      guess = getGuess(guess)
+                      error = Math.abs(guess * guess - x);
+                      console.log(guess);
+                      counter += 1;
+                  }
+                  console.log('Count is ' + counter)
+                  htmlout = "Square Root is " + guess.toFixed(2);
+                  $('#details').html(htmlout);
+              });
+          });
+        </script>
+
+    </body>
+</html>
