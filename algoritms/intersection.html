@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Intersection of Two Lines</h3>
+            <p>
+                Line 1: y = 
+                <input type="text" id="m1" size="1" value="1">x +
+                <input type="text" id="b1" size="1" value="2"> <br>
+                Line 2: y = 
+                <input type="text" id="m2" size="1" value="-2">x +
+                <input type="text" id="b2" size="1" value="0"> <br>
+            </p>
+            <input type="submit" id="submitButton" value="Calculate"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+            var m1 = -2;
+            var m2 = -2;
+            var b1 = 2;
+            var b2 = -1;
+            var guess = 9;
+            var marginOfError = 0.05;
+            var error = 0;
+            var counter = 0;
+            var htmlout = "";
+          $(document).ready(function () {
+              function getGuess(g) {
+                  return ((b2-b1) / (m1-m2) + g) / 2;
+              }
+              function y1(x) {
+                  return m1 * x + b1;
+              }
+              function y2(x) {
+                  return m2 * x + b2;
+              }
+              $('#submitButton').click(function() {
+                  m1 = parseFloat($('#m1').val());
+                  m2 = parseFloat($('#m2').val());
+                  b1 = parseFloat($('#b1').val());
+                  b2 = parseFloat($('#b2').val());
+                  if (m1 == m2) {
+                    { htmlout = "The lines are parallel."; }
+                  } else {
+                    error = Math.abs(y1(guess) - y2(guess));
+                    counter = 0;
+                    while (error >= marginOfError) {
+                      guess = getGuess(guess)
+                      error = Math.abs(y1(guess) - y2(guess));
+                      console.log(guess, y1(guess), y2(guess));
+                      counter += 1;
+                    }
+                    htmlout = "Intersection is "
+                    htmlout = htmlout + "(" + guess.toFixed(1) + ","
+                    htmlout = htmlout + y1(guess).toFixed(1) +  ")";
+                    console.log('Count is ' + counter)
+                  }
+                  $('#details').html(htmlout);
+              });
+          });
+        </script>
+
+    </body>
+</html>
