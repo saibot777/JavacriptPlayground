@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Calculate Factors of a Number</h3>
+            Enter Number
+            <input type="text" id="num" value="99" size="4"><br>
+            <input type="submit" id="submitButton" value="Calculate"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+          var num = 99;
+          var htmlout = "";
+          $(document).ready(function () {
+              function isFactor(x) {
+                  if (num % x == 0) {
+                      return true;
+                  } else {
+                      return false
+                  }
+              }
+              $('#submitButton').click(function() {
+                  htmlout = "";
+                  num = parseFloat($('#num').val());
+                  if (num < 0) { htmlout = "Enter integer greater than zero." }
+                  for (var i = 1; i <= num; i++) {
+                      if (isFactor(i) == true) {
+                          htmlout = htmlout + " " + i.toString();
+                          console.log(i);
+                      }
+                  }
+                  $('#details').html(htmlout);
+              });
+          });
+        </script>
+
+    </body>
+</html>
