@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>MathCode.net</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Solve Math Problems with JavaScript</h2>
+            <hr>
+            <!-- html code here -->
+            <h3>Prime Numbers</h3>
+            Enter Number:
+            <input type="text" id="num" value="8">
+            <input type="submit" id="submitButton" value="Sum"/>
+            <br/><br/>
+            <div id="details" ></div>
+        </div>
+
+        <script type=text/javascript>
+           "use strict";
+           var num = 0;
+           var sum = 0;
+           var htmlout = '';
+          $(document).ready(function () {
+              function isPrime(x) {
+                  for (var i = 2; i <= x - 1; i++) {
+                      if (x % i == 0) {
+                          return false;
+                      }
+                  }
+                  return true;
+              }
+              $('#submitButton').click(function() {
+                  htmlout = "Prime Numbers: ";
+                  sum = 0;
+                  num = parseFloat($('#num').val());
+                  for (var i = 2; i <= num; i++) {
+                      if (isPrime(i) == true) {
+                          sum = sum + i;
+                          htmlout = htmlout + " " + i.toString();
+                          console.log(i, sum);
+                      }
+                  }
+                  htmlout = htmlout + "<br></br>";
+                  htmlout = htmlout + "The sum is " + sum.toString();
+                  
+                  $('#details').html(htmlout);
+              });
+          });
+        </script>
+
+    </body>
+</html>
