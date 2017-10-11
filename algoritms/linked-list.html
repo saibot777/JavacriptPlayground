@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lists</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Linked-List</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+              function LinkedList () {
+                this.head = null;
+                this.tail = null;
+              }
+
+              function Node (value, next, prev) {
+                this.value = value;
+                this.next = next;
+                this.prev = prev;
+              } 
+
+            // Creating a Node
+            //   var node1 = new Node(100, 'node2', null);
+
+            // Add To Head Method  
+              LinkedList.prototype.addToHead = function (value) {
+                  var newNode = new Node(value, this.head, null);
+                  if (this.head) this.head.prev = newNode;
+                  else this.tail = newNode;
+                  this.head = newNode;
+              };
+
+              var ll = new LinkedList();
+
+              ll.addToHead(100);
+              console.log(ll);
+          });
+        </script>
+
+    </body>
+</html>
