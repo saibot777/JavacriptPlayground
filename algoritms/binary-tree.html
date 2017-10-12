@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lists</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Binary-Search-Tree</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                // Constructor Main Function
+                function BST (value) {
+                    this.value = value;
+                    this.left = null;
+                    this.right = null;
+                } 
+
+                // Insert Method
+                BST.prototype.insert = function (value) {
+                    if (value <= this.value) {
+                        if (!this.left) this.left = new BST(value);
+                        else this.left.insert(value);
+                    } else if (value > this.value) {
+                        if (!this.right) this.right = new BST(value);
+                        else this.right.insert(value);
+                    }
+                };
+
+                var bst = new BST(70);
+
+                bst.insert(30);
+                bst.insert(70);
+                bst.insert(110);
+                bst.insert(220);
+                bst.insert(50);
+                bst.insert(10);
+                bst.insert(230);
+                bst.insert(50);
+
+                console.log(bst.left);
+
+          });
+        </script>
+
+    </body>
+</html>
