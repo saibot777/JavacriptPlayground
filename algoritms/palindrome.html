@@ -18,13 +18,13 @@
         <script type=text/javascript>
           $(document).ready(function () {
 
-                function isPalindrome(params) {
+                function isPalindrome(string) {
                     string = string.toLowerCase();
                     var charactersArr = string.split('');
                     var validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
                     
                     var lettersArr = [];
-                    charactersArr.forEach(element => {
+                    charactersArr.forEach(char => {
                         if(validCharacters.indexOf(char) > -1) lettersArr.push(char);
                     });
 
@@ -32,7 +32,7 @@
                     else return false;
                 }
 
-                console.log(isPalindrome("race car"));
+                console.log(isPalindrome("race ca"));
 
           });
         </script>
