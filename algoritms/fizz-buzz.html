@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lists</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Fizz Buzz</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function fizzBuzz(num) {
+                    for (var i = 1; i <= num; i++) {
+                        if (i % 15 === 0) console.log('FizzBuzz');
+                        else if (i % 3 === 0) console.log('Fizz');
+                        else if (i % 5 === 0) console.log('Buzz');
+                        else console.log(i)
+                    }
+                }
+
+                fizzBuzz(20);
+
+          });
+        </script>
+
+    </body>
+</html>
