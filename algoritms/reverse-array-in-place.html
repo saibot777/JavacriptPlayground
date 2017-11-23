@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Reverse</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Reverse Array in Place</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function reverseArrayInPlace(arr) {
+                    for(var i = 0; i < arr.length / 2; i++) {
+                        var tempVar = arr[i];
+                        arr[i] = arr[arr.length - 1 - i];
+                        arr[arr.length - 1 - i] = tempVar;
+                    }
+
+                    return arr;
+                }
+
+                console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7]));
+
+          });
+        </script>
+
+    </body>
+</html>
