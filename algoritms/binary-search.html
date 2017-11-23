@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Binary</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Binary Search</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function binarySearch(numArray, key) {
+                    var middleIdx = Math.floor(numArray.length / 2);
+                    var middleElem = numArray[middleIdx];
+
+                    if (middleElem === key) return true;
+                    else if (middleElem < key && numArray.length > 1) {
+                        return binarySearch(numArray.splice(middleIdx, numArray.length), key);
+                    }
+                    else if (middleElem < key && numArray.length > 1) {
+                        return binarySearch(numArray.splice(o, middleIdx), key);
+                    }
+                    else return false;
+
+                }
+
+               console.log(binarySearch([5, 7, 12 ,16, 36, 39, 42, 56, 71], 56));
+
+          });
+        </script>
+
+    </body>
+</html>
