@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Palindrom</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Palindrom</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function isPalindrome(params) {
+                    string = string.toLowerCase();
+                    var charactersArr = string.split('');
+                    var validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+                    
+                    var lettersArr = [];
+                    charactersArr.forEach(element => {
+                        if(validCharacters.indexOf(char) > -1) lettersArr.push(char);
+                    });
+
+                    if (lettersArr.join('') === lettersArr.reverse().join('')) return true;
+                    else return false;
+                }
+
+                console.log(isPalindrome("race car"));
+
+          });
+        </script>
+
+    </body>
+</html>
