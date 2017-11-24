@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Stock</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Max Stock Profit</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function maxStockProfit (pricesArr) {
+                    var maxProfit = -1;
+                    var buyPrice = 0;
+                    var sellPrice = 0;
+
+                    var changeBuyPrice = true;
+
+                    for (var i = 0; i < pricesArr.length; i++) {
+                        if (changeBuyPrice) buyPrice = pricesArr[i];
+                        sellPrice = pricesArr[i + 1];
+
+                        if (sellPrice < buyPrice) {
+                            changeBuyPrice = true;
+                        }
+                        else {
+                            var tempProfit = sellPrice - buyPrice;
+                            if (tempProfit > maxProfit) maxProfit = tempProfit;
+                            changeBuyPrice = false;
+                        }
+                    }
+
+                    return maxProfit;
+                }
+
+                console.log(maxStockProfit([32, 46, 26, 38, 40, 48, 42]));
+
+          });
+        </script>
+
+    </body>
+</html>
