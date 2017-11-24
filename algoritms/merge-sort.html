@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Merge Sort</title>  
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    </head>
+    <body>
+        <br/>
+        <div class="container">
+            <h2>Merge Sort</h2>
+            <hr>
+            <h4>Check The Console</h4>
+        </div>
+
+        <script type=text/javascript>
+          $(document).ready(function () {
+
+                function mergeSort(arr) {
+                    if (arr.length < 2) return arr;
+                    var middleIndex = Math.floor(arr.length / 2);
+                    var firstHalf = arr.slice(0, middleIndex);
+                    var secondHalf = arr.slice(middleIndex);
+
+                    return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+                }
+
+                function merge(array1, array2) {
+                    var result = [];
+                    while (array1.length && array2.length) {
+                        var minElem;
+                        if (array1[0] < array2[0]) minElem = array1.shift();
+                        else minElem = array2.shift();
+                        result.push(minElem);
+                    }
+
+                    if (array1.length) result = result.concat(array1);
+                    else result = result.concat(array2);
+                    return result;
+                }
+
+                console.log(mergeSort([ 6000, -34, 203, 3, 746, 200, 984, 198, 1, 9, 1 ]));
+
+          });
+        </script>
+
+    </body>
+</html>
