@@ -1,5 +1,6 @@
 import hh from 'hyperscript-helpers';
 import { h } from 'virtual-dom';
+import { showFormMsg } from './Update';
 
 const { pre, div, h1, button, label, form, input } = hh(h);
 
@@ -14,20 +15,48 @@ function fieldSet(labelText, inputValue) {
     ])
 }
 
+function buttonSet(dispatch) {
+    return div([
+        button(
+            {
+                className: 'f3 pv2 ph3 bg-blue white, bn mr2 dim',
+                type: 'submit',
+            },
+            'Save'
+        ),
+        button(
+            {
+                className: 'f3 pv2 ph3 bn bg-light-gray dim',
+                type: 'submit',
+                onclick: () => dispatch(showFormMsg(false)) 
+            },
+            'Cancel'
+        )
+    ]);
+}
+
 function formView(dispatch, model) {
-    const { description } = model;
-    return form(
+    const { description, calories, showForm } = model;
+    if (showForm) {
+        return form(
+            { 
+                className: 'w-100 mv2'
+            },
+            [
+                fieldSet('Meal', description),
+                fieldSet('Calories', calories || ''),
+                buttonSet(dispatch)
+            ]
+        )
+    }
+    
+    return button(
         { 
-            className: 'w-100 mv2'
+            className: 'f3 pv2 ph3 bg-blue white bn',
+            onclick: () => dispatch(showFormMsg(true)) 
         },
-        [
-            fieldSet('Meal', description)
-        ]
+        'Add Meal'
     )
-    // return button(
-    //     { className: 'f3 pv2 ph3 bg-blue white bn' },
-    //     'Add Meal'
-    // )
 }
 
 function view(dispatch, model) {
