@@ -1,5 +1,7 @@
 const MSGS = {
-    SHOW_FORM: 'SHOW_FORM'
+    SHOW_FORM: 'SHOW_FORM',
+    MEAL_INPUT: 'MEAL_INPUT',
+    CALORIES_INPUT: 'CALORIES_INPUT'
 };
 
 export function showFormMsg(showForm) {
@@ -9,13 +11,36 @@ export function showFormMsg(showForm) {
     };
 }
 
+export function mealInputMsg(description) {
+    return {
+        type: MSGS.MEAL_INPUT,
+        description
+    };
+}
+
+export function caloriesInputMsg(calories) {
+    return {
+        type: MSGS.CALORIES_INPUT,
+        calories
+    }
+}
+
 function update(msg, model) {
     switch (msg.type) {
         case MSGS.SHOW_FORM: {
             const { showForm } = msg;
             return { ...model, showForm: true };
         }
+        case MSGS.MEAL_INPUT: {
+            const { description } = msg;
+            return { ...model, description };
+        }
+        case MSGS.CALORIES_INPUT: {
+            const { description } = msg;
+            return { ...model, description };
+        }
     }
+    return model;
 }
 
 export default update;
