@@ -3,7 +3,8 @@ import { h } from 'virtual-dom';
 import { 
     showFormMsg,
     mealInputMsg,
-    caloriesInputMsg 
+    caloriesInputMsg,
+    saveMealMsg 
 } from './Update';
 
 const { pre, div, h1, button, label, form, input } = hh(h);
@@ -25,14 +26,14 @@ function buttonSet(dispatch) {
       button(
         {
           className: 'f3 pv2 ph3 bg-blue white bn mr2 dim',
-          type: 'button',
+          type: 'submit',
         },
         'Save',
       ),
       button(
         {
           className: 'f3 pv2 ph3 bn bg-light-gray dim',
-          type: 'submit',
+          type: 'button',
           onclick: () => dispatch(showFormMsg(false)),
         },
         'Cancel',
@@ -45,13 +46,19 @@ function formView(dispatch, model) {
     if (showForm) {
         return form(
             { 
-                className: 'w-100 mv2'
+                className: 'w-100 mv2',
+                onsubmit: e => {
+                    e.preventDefault();
+                    dispatch(saveMealMsg);
+                }
             },
             [
                 fieldSet('Meal', description,
-                e => dispatch(mealInputMsg(e.target.value))),
+                    e => dispatch(mealInputMsg(e.target.value))
+                ),
                 fieldSet('Calories', calories || '',
-                    e => dispatch(caloriesInputMsg(e.target.value))),
+                    e => dispatch(caloriesInputMsg(e.target.value))
+                ),
                 buttonSet(dispatch)
             ],
         )
